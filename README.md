@@ -1,177 +1,108 @@
-🚩 Problem Statement
+# 🚀 **Enterprise Ops Agent**
+### **Autonomous Multi-Agent System for Incident & DevOps Automation**  
+_Built for Google AI Agents Intensive Capstone_
 
-Modern DevOps and SRE teams deal with overwhelming operational workloads: incident triage, GitHub issue scanning, log summarization, diagnostics, and long-running checks.
-These tasks interrupt focused engineering work, require constant monitoring, and often span many steps where context is lost.
+---
 
-This leads to:
+## 🟥 **Problem Statement**
+Modern DevOps and SRE teams face overwhelming operational workloads such as:
 
-Slow incident resolution
+- Incident triage  
+- Log and CPU diagnostics  
+- GitHub issue scanning  
+- Long-running backend checks  
+- Manual summarization tasks  
 
-Burnout from repetitive manual work
+These tasks interrupt engineering focus, lack automated context, and waste valuable time.
 
-Fragmented tooling
+This results in:
 
-No persistent record of decisions
+- Slow incident resolution  
+- Repetitive, manual tasks  
+- Fragmented tooling  
+- Lost historical context  
+- High operational overhead  
 
-Inefficient use of engineer time
+Ops workflows require **reasoning + context + tool usage + long-running operations**, making them ideal for AI agents.
 
-Ops workflows require reasoning + tool usage + context + multi-step operations, which is why traditional automation falls short.
+---
 
-🤖 Why Agents?
+## 🧠 **Why Agents?**
+Agents are a perfect match for DevOps automation because they:
 
-Agents bring abilities that map perfectly onto real-world DevOps workflows:
+### ✔ Maintain Context  
+They remember previous steps, results, and state across long workflows.
 
-✔ Maintain state
+### ✔ Use Tools Autonomously  
+Agents can call GitHub APIs, execute commands, retrieve logs, and more.
 
-Multiple operations span minutes to hours — agents retain and recall context.
+### ✔ Support Sequential & Parallel Execution  
+Some workflows require ordered logic; others can run concurrently.
 
-✔ Use tools autonomously
+### ✔ Manage Long-Running Operations  
+Real diagnostics can take minutes or hours — agents handle pause/resume/cancel.
 
-DevOps relies on GitHub APIs, shell commands, monitoring systems, and analytics tools.
+### ✔ Provide Observability  
+Prometheus metrics, logs, and evaluation make behavior transparent.
 
-✔ Run sequential & parallel tasks
+---
 
-Incident investigation may require ordered steps, but GitHub scanning can run in parallel.
+## 🏗 **What I Created — Enterprise Ops Agent**
+A complete, production-style AI system with:
 
-✔ Handle long-running tasks
+### **🔹 1. Multi-Agent Architecture**
+- **Coordinator Agent**  
+- **Sequential Worker Agents**  
+- **Parallel Worker Agents**
 
-Diagnostics often take time — agents with pause/resume/cancel + persisted state are ideal.
+### **🔹 2. Tools**
+- GitHub Issue Search Tool  
+- Command Execution Tool  
+- Custom Incident Summary Tool  
 
-✔ Provide observability
+### **🔹 3. Persistent Memory**
+SQLite-backed session memory storing:
+- Request history  
+- Tool outputs  
+- Long-running operation metadata  
 
-Prometheus metrics + logging + evaluation make behavior transparent and debuggable.
-
-This is exactly why agents are the right solution for real-world enterprise Ops.
-
-🧠 What I Created — Enterprise Ops Agent
-
-A complete production-style AI Ops Agent System, built using ADK concepts:
-
-🏗 Multi-Agent Architecture
-
-Coordinator Agent — central router
-
-Sequential Worker Agents — ordered reasoning
-
-Parallel Worker Agents — concurrent tasks
-
-🛠 Tools
-
-GitHub Issue Search Tool (OpenAPI-based)
-
-Command Execution Tool
-
-Custom Incident Summary Tool
-
-🧳 Persistent Memory
-
-SQLite-backed session memory stores:
-
-Request history
-
-Tool results
-
-Long-running operation metadata
-
-🕒 Long-Running Ops Manager (MCP-style)
-
+### **🔹 4. Long-Running Operation Manager (MCP-style)**
 Supports:
+- Start  
+- Pause  
+- Resume  
+- Cancel  
+- Progress tracking  
+- Persistent state across runs  
 
-Start
+### **🔹 5. Observability**
+Prometheus `/metrics` endpoint exposing:
+- Requests processed  
+- Worker tasks  
+- Operation lifecycle counters  
 
-Pause
+### **🔹 6. Evaluation**
+- Pytest suite  
+- Manual CLI verification  
+- Metrics-based evaluation  
 
-Resume
+### **🔹 7. Deployment**
+- Works directly in GitHub Codespaces  
+- Devcontainer included  
+- Flask API for health + metrics  
 
-Cancel
+---
 
-Progress tracking
+## 🎬 **Demo**
 
-State persistence across restarts
+This section demonstrates how the Enterprise Ops Agent runs inside GitHub Codespaces, how it processes tasks, handles long-running operations, and exposes observability metrics.
 
-📊 Observability
+---
 
-Prometheus /metrics endpoint exposes counters:
+### ▶️ **1. Run the Main Agent System**
 
-Requests processed
+Start the coordinator, workers, Flask API, and demo workflow:
 
-Worker task count
-
-Operation state transitions
-
-🧪 Evaluation
-
-Pytest suite
-
-Manual CLI evaluation
-
-Metrics validation
-
-🚀 Deployment
-
-Fully deployable via:
-
-GitHub Codespaces (devcontainer)
-
-Python runtime
-
-Containerization-ready
-
-🎥 Demo Overview
-▶️ Running the main agent
+```bash
 python main.py
 
-
-This starts:
-
-Flask API (health + metrics)
-
-Demo agent sequence
-
-Coordinator + workers
-
-State persistence
-
-▶️ Long-running ops
-python -m agents.long_running_manager
-m> start 8
-m> pause <id>
-m> resume <id>
-m> list
-
-▶️ Observability
-
-Visit:
-
-/metrics  
-
-
-to see live Prometheus counters.
-
-▶️ Memory
-
-session_store.sqlite3 keeps all history.
-
-🔨 The Build
-
-Technologies used:
-
-Python
-
-Multi-agent design
-
-Google ADK-inspired patterns
-
-SQLite session memory
-
-Prometheus client
-
-Flask API
-
-GitHub OpenAPI tool
-
-Pytest evaluation suite
-
-Long-running operation workflow
-
-GitHub Codespaces Devcontainer
