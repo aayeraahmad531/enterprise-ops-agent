@@ -1,0 +1,6 @@
+google-adk>=0.1.0
+requests
+prometheus-client
+flask
+pytest
+python-dotenv

@@ -1,0 +1,13 @@
+{
+  "name": "Enterprise Ops Agent (ADK)",
+  "dockerFile": "Dockerfile",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8000],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "python -m pip install -r requirements.txt || true",
+  "extensions": [
+    "ms-python.python"
+  ]
+}
